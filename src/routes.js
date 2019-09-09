@@ -1,3 +1,8 @@
-import {createAppContainer, createStackNavigator} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-const Routes = createAppContainer(createStackNavigator({}));
+import Feed from './pages/Feed';
+
+const Routes = createAppContainer(createStackNavigator({Feed}));
+
+export default Routes;

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "server": "json-server server.json -d 1000 -w",
+    "emulador": "adb reverse tcp:3000 tcp:3000"
   },
   "dependencies": {
     "react": "16.8.6",

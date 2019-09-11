@@ -12,7 +12,7 @@ export default function Feed() {
       `http://localhost:3000/feed?_expand=author&_limit=5&_page=${pageNumber}`
     );
     const data = await response.json();
-    setFeed(data);
+    setFeed([...feed, ...data]);
     setPage(pageNumber + 1);
   }
 

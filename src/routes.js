@@ -1,24 +1,31 @@
-import React from 'react';
-import {Image} from 'react-native';
-import {createAppContainer, createStackNavigator} from 'react-navigation';
+import React from "react";
+import { Image, TouchableOpacity, Alert } from "react-native";
+import { createAppContainer, createStackNavigator } from "react-navigation";
 
-import Feed from './pages/Feed';
+import Feed from "./pages/Feed";
 
-import logo from './assets/instagram.png';
+import logo from "./assets/instagram.png";
 
 export default createAppContainer(
   createStackNavigator(
     {
-      Feed,
+      Feed
     },
     {
-      headerLayoutPreset: 'center',
+      headerLayoutPreset: "center",
       defaultNavigationOptions: {
-        headerTitle: <Image source={logo} />,
+        headerTitle: (
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={alert("Image Clicked!!!")}
+          >
+            <Image source={logo} />
+          </TouchableOpacity>
+        ),
         headerStyle: {
-          backgroundColor: '#f5f5f5',
-        },
-      },
-    },
-  ),
+          backgroundColor: "#f5f5f5"
+        }
+      }
+    }
+  )
 );

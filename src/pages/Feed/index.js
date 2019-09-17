@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, Text } from "react-native";
 
-import { Post, Header, Avatar, Name, PostImage, Description } from "./styles";
+import {
+  Post,
+  Header,
+  Avatar,
+  Name,
+  PostImage,
+  Description,
+  Loading
+} from "./styles";
 
 export default function Feed() {
   const [feed, setFeed] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   async function loadPage(pageNumber = page) {
     if (total && pageNumber > total) return;
-    console.log(pageNumber);
+    setLoading(true);
 
     const response = await fetch(
       `http://localhost:3000/feed?_expand=author&_limit=5&_page=${pageNumber}`
@@ -20,6 +29,7 @@ export default function Feed() {
     setTotal(Math.floor(totalItem / 5));
     setFeed([...feed, ...data]);
     setPage(pageNumber + 1);
+    setLoading(true);
   }
 
   useEffect(() => {
@@ -33,6 +43,7 @@ export default function Feed() {
         keyExtractor={post => String(post.id)}
         onEndReached={() => loadPage()}
         onEndReachedThreshold={0.1}
+        ListFooterComponent={loading && <Loading />}
         renderItem={({ item }) => (
           <Post>
             <Header>

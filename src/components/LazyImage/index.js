@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 
-// import { Container } from './styles';
+import { Small } from "./styles";
 
 export default function LazyImage({ smallSouce, souce, aspectRatio }) {
-  return <View />;
+  return <Small souce={smallSouce} ratio={aspectRatio} resizeMode="contain" />;
 }

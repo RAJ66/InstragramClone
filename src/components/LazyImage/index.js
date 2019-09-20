@@ -3,7 +3,12 @@ import { Animated } from "react-native";
 import { Small, Original } from "./styles";
 import { styled } from "styled-components/native";
 
-export default function LazyImage({ smallSource, source, aspectRatio }) {
+export default function LazyImage({
+  smallSource,
+  source,
+  aspectRatio,
+  shouldLoad
+}) {
   const opacity = new Animated.Value(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -18,10 +23,12 @@ export default function LazyImage({ smallSource, source, aspectRatio }) {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
-  }, []);
+    if (shouldLoad) {
+      setTimeout(() => {
+        setLoaded(true);
+      }, 1000);
+    }
+  }, [shouldLoad]);
 
   return (
     <Small

@@ -55,7 +55,7 @@ export default function Feed() {
             </Header>
             <LazyImage
               aspectRatio={item.aspectRatio}
-              smallSouce={{ uri: item.small }}
+              smallSource={{ uri: item.small }}
               source={{ uri: item.image }}
             />
             <Description>
